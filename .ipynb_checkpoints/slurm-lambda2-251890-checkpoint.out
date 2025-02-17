@@ -1,0 +1,18 @@
+* SLURM BATCH JOB 'test' STARTING *
+* Activating environment miniproject *
+Training for drop_rate=0.1, learn_mask=False
+Traceback (most recent call last):
+  File "main.py", line 56, in <module>
+    main()
+  File "main.py", line 32, in main
+    trainer.fit(train_loader, validation_loader, args.num_epochs)
+  File "/home/orizohar/Project/helpers/trainer.py", line 27, in fit
+    train_loss, train_psnr, train_psnr_std = self.train_epoch(train_loader)
+  File "/home/orizohar/Project/helpers/trainer.py", line 58, in train_epoch
+    loss.backward()
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/torch/_tensor.py", line 307, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/torch/autograd/__init__.py", line 154, in backward
+    Variable._execution_engine.run_backward(
+RuntimeError: CUDA out of memory. Tried to allocate 1.22 GiB (GPU 0; 7.79 GiB total capacity; 5.56 GiB already allocated; 97.38 MiB free; 6.64 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+* SLURM BATCH JOB 'test' DONE *

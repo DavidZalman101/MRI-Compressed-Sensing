@@ -1,0 +1,49 @@
+* SLURM BATCH JOB 'test' STARTING *
+* Activating environment miniproject *
+Running on GPU: True
+Training for drop_rate=0.5, learn_mask=False
+Epopch: 0, Train Loss: 0.23793662429473206, Val Loss: 0.18750987720230353, Train PSNR: 24.79230599134509, Val PSNR: 24.597126794897992 
+Epopch: 1, Train Loss: 0.17042156542095133, Val Loss: 0.1714573065223901, Train PSNR: 26.088486672545194, Val PSNR: 25.009272409522016 
+Epopch: 2, Train Loss: 0.15540169462372985, Val Loss: 0.1626061361445033, Train PSNR: 26.485749645255105, Val PSNR: 25.223989196445633 
+Epopch: 3, Train Loss: 0.14781604648082247, Val Loss: 0.15813419967889786, Train PSNR: 26.737382329100157, Val PSNR: 25.35589728148087 
+Epopch: 4, Train Loss: 0.14202914882549894, Val Loss: 0.15064435905736426, Train PSNR: 26.896198511946736, Val PSNR: 25.56368409032407 
+Epopch: 5, Train Loss: 0.13825214417571988, Val Loss: 0.15198130565493004, Train PSNR: 26.977293503984072, Val PSNR: 25.539345368095066 
+Epopch: 6, Train Loss: 0.13476699669561398, Val Loss: 0.14596725384826245, Train PSNR: 27.111325076315016, Val PSNR: 25.70405620077382 
+Traceback (most recent call last):
+  File "main.py", line 55, in <module>
+    main()
+  File "main.py", line 31, in main
+    trainer.fit(train_loader, validation_loader, args.num_epochs)
+  File "/home/orizohar/Project/helpers/trainer.py", line 30, in fit
+    train_loss, train_psnr, train_psnr_std = self.train_epoch(train_loader)
+  File "/home/orizohar/Project/helpers/trainer.py", line 61, in train_epoch
+    for inputs, targets in loader:
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 521, in __next__
+    data = self._next_data()
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1203, in _next_data
+    return self._process_data(data)
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1229, in _process_data
+    data.reraise()
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/torch/_utils.py", line 434, in reraise
+    raise exception
+OSError: Caught OSError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/torch/utils/data/_utils/worker.py", line 287, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/orizohar/Project/data/mri_dataset.py", line 44, in __getitem__
+    with h5py.File(fname, 'r') as data:
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/h5py/_hl/files.py", line 567, in __init__
+    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
+  File "/home/orizohar/miniconda3/envs/miniproject/lib/python3.8/site-packages/h5py/_hl/files.py", line 231, in make_fid
+    fid = h5f.open(name, flags, fapl=fapl)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 106, in h5py.h5f.open
+OSError: [Errno 5] Unable to synchronously open file (file read failed: time = Mon May 20 11:39:00 2024
+, filename = '/datasets/fastmri_knee/singlecoil_train/file1001161.h5', file descriptor = 39, errno = 5, error message = 'Input/output error', buf = 0x7fffa0390490, total read size = 8, bytes this sub-read = 8, bytes actually read = 18446744073709551615, offset = 0)
+
+* SLURM BATCH JOB 'test' DONE *
